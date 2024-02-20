@@ -1,0 +1,41 @@
+﻿@model Categories
+@{
+    ViewData["Title"] = "Add Category Item";
+}
+
+
+<form method="post" asp-action="AddCategory">
+    <div class="p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add Category Item</h2>
+        </div>
+    </div>
+     
+    <div asp-validation-summary="All"></div>
+
+    <div class="mb-3">
+            <label for="Category">Category</label>
+            <input class="form-control" asp-for="Category"  id="Category" name="Category" />
+               <!-- <option value="0">Select Category</option>
+                <option value="1">Computers</option>
+                <option value="2">Phones and Tablets</option>
+                <option value="3">Resaux and Security</option>
+                <option value="4">Electric Machines</option>
+                <option value="5">Clothes</option>
+            </select>
+            -->
+        </br>
+
+        <label asp-for="TotalNb"></label>
+        <input asp-for="TotalNb" class="form-control" />
+        <span asp-validation-for="TotalNb" class="text-danger"></span>
+        </br>
+
+        <button type="submit" class="btn btn-success" style="width:150px">Save</button>
+        <a asp-action="Categories" asp-controller="Categories" class="btn btn-secondary" style="width:150px">Back to Users</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+        }

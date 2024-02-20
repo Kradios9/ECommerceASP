@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ECommerceASP.Models.Categories>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="container p-3">
+
+    @if (TempData["successData"] != null)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Well done!</strong> You successfully @TempData["successData"]
+        </div>
+    }
+
+    <div class="row pt-4">
+
+        <div class="col-6">
+            <h1 class="text-primary">Categories</h1>
+        </div>
+        <div class="col-6 text-end">
+            <h1 class="text-danger">
+                <a class="btn btn-outline-primary" asp-controller="Categories" asp-action="AddCategory"><i class="bi bi-person-plus"></i>&nbsp; Add Category Item</a>
+            </h1>
+        </div>
+
+    </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr class="table-active">
+                        <td><h4 style="color:red">Category</h4></td>
+                        <td><h4 style="text-align:center;color:red">Total Nomber</h4></td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var Per in Model)
+                    {
+                    <tr class="table-active">
+                        <td>@Per.Category</td>
+                        <td style="text-align:center" >@Per.TotalNb</td>
+                    </tr>
+                    }
+                </tbody>
+                 
+            </table>
+ 
+    <br />
+</div>

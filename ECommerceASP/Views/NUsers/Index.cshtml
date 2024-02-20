@@ -1,0 +1,83 @@
+﻿
+@model IEnumerable<NUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-3">
+
+    @if (TempData["successData"] != null)
+    {   
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Well done!</strong> You successfully @TempData["successData"]
+        </div>
+    }
+
+    <div class="row pt-4">
+        
+        <div class="col-6">
+            <h1 class="text-primary">Users</h1>
+        </div>
+        <div class="col-6 text-end">
+            <h1 class="text-danger">
+                <a class="btn btn-outline-primary" asp-controller="NUsers" asp-action="AddUser"><i class="bi bi-person-plus"></i>&nbsp; Add User</a>
+             </h1>
+        </div>
+
+    </div>
+
+    <table class="table border-danger" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-danger">
+                    Id
+                </th>
+                <th class="text-danger">
+                    User Name
+                </th>
+                <th class="text-danger">
+                    Email
+                </th>
+                <th class="text-danger">
+                    Price
+                </th>
+                <th class="text-danger">
+                    Creating Date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td style="padding-top:15px; width:10%">
+                        @x.ID
+                        </td>
+                        <td style="padding-top:15px; width:15%">
+                        @x.Name
+                        </td>
+                        <td style="padding-top:15px; width:30%">
+                        @x.Email
+                        </td>
+                        <td style="padding-top:15px; width:20%">
+                        @x.Price
+                        </td>
+                        <td style="padding-top:15px; width:30%">
+                        @x.CreatedDate
+                        </td>
+                        <td class="d-flex">
+                            <a class="btn btn-outline-success" asp-controller="NUsers" asp-action="Edit" asp-route-Id="@x.ID"><i class="bi bi-pen"></i></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-outline-danger" asp-controller="NUsers" asp-action="Delete" asp-route-Id="@x.ID"><i class="bi bi-trash3"></i></a>
+                        </td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+
+</div>
+
+
